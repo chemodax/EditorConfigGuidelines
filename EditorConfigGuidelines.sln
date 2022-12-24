@@ -13,25 +13,13 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|arm64 = Debug|arm64
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|arm64 = Release|arm64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|arm64.ActiveCfg = Debug|arm64
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|arm64.Build.0 = Debug|arm64
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|x86.ActiveCfg = Debug|x86
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Debug|x86.Build.0 = Debug|x86
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|arm64.ActiveCfg = Release|arm64
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|arm64.Build.0 = Release|arm64
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|x86.ActiveCfg = Release|x86
-		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|x86.Build.0 = Release|x86
+		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF2B264E-A4FA-4568-97C9-431E2B03DD06}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
