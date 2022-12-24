@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Text.Editor;
+﻿using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.Collections.Generic;
 using System.Windows.Data;
@@ -9,6 +10,11 @@ namespace EditorConfigGuidelines
 {
     internal sealed class GuidelinesAdornment
     {
+        private static Guid colorCategoryGuid = new Guid("{54FAC166-299A-4D70-9F43-F79E9A867B80}");
+        private static ThemeResourceKey guidelineColorKey =
+            new ThemeResourceKey(colorCategoryGuid, "ColumnGuidelineColor", 
+                                 ThemeResourceKeyType.BackgroundBrush);
+
         private readonly IAdornmentLayer layer;
         private int[] guidelines;
 
@@ -25,9 +31,6 @@ namespace EditorConfigGuidelines
             this.guidelines = ParseOptions(view.Options);
             this.view.Options.OptionChanged += TextView_OptionChanged;
             this.view.LayoutChanged += TextView_LayoutChanged;
-
-            this.brush = new SolidColorBrush(Color.FromArgb(0x20, 0x00, 0x00, 0xff));
-            this.brush.Freeze();
         }
 
         private void TextView_LayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
@@ -49,7 +52,7 @@ namespace EditorConfigGuidelines
             try
             {
                 IReadOnlyDictionary<string, object> conventions =
-                    options.GetOptionValue(DefaultOptions.RawCodingConventionsSnapshotOptionId); 
+                    options.GetOptionValue(DefaultOptions.RawCodingConventionsSnapshotOptionId);
                 object guidelines;
                 if (conventions != null &&
                     conventions.TryGetValue("guidelines", out guidelines) &&
@@ -91,8 +94,7 @@ namespace EditorConfigGuidelines
                 line.SetBinding(Line.Y1Property, new Binding(nameof(GuidelineDataSource.Y1)));
                 line.SetBinding(Line.X2Property, new Binding(nameof(GuidelineDataSource.X)));
                 line.SetBinding(Line.Y2Property, new Binding(nameof(GuidelineDataSource.Y2)));
-                line.Stroke = brush;
-
+                line.SetResourceReference(Line.StrokeProperty, guidelineColorKey);
                 layer.AddAdornment(
                     AdornmentPositioningBehavior.OwnerControlled,
                     null,
