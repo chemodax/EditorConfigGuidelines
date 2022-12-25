@@ -1,10 +1,15 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Editor;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using TextEditorGuidelines;
 
 namespace EditorConfigGuidelines
 {
@@ -19,10 +24,10 @@ namespace EditorConfigGuidelines
         private int[] guidelines;
 
         private readonly IWpfTextView view;
-        private readonly Brush brush;
         private readonly List<GuidelineDataSource> guidelinesDataSource;
+        private readonly IEditorFormatMap formatMap;
 
-        public GuidelinesAdornment(IWpfTextView view)
+        public GuidelinesAdornment(IWpfTextView view, IEditorFormatMapService formatMapService)
         {
             this.guidelinesDataSource = new List<GuidelineDataSource>();
             this.view = view;
@@ -31,6 +36,16 @@ namespace EditorConfigGuidelines
             this.guidelines = ParseOptions(view.Options);
             this.view.Options.OptionChanged += TextView_OptionChanged;
             this.view.LayoutChanged += TextView_LayoutChanged;
+            this.formatMap = formatMapService.GetEditorFormatMap(view);
+            this.formatMap.FormatMappingChanged += FormatMap_FormatMappingChanged;
+        }
+
+        private void FormatMap_FormatMappingChanged(object sender, FormatItemsEventArgs e)
+        {
+            if (e.ChangedItems.Contains(GuidelineFormatDefinition.FormatName))
+            {
+                CreateVisuals();
+            }
         }
 
         private void TextView_LayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
@@ -94,7 +109,10 @@ namespace EditorConfigGuidelines
                 line.SetBinding(Line.Y1Property, new Binding(nameof(GuidelineDataSource.Y1)));
                 line.SetBinding(Line.X2Property, new Binding(nameof(GuidelineDataSource.X)));
                 line.SetBinding(Line.Y2Property, new Binding(nameof(GuidelineDataSource.Y2)));
-                line.SetResourceReference(Line.StrokeProperty, guidelineColorKey);
+
+                ResourceDictionary resDict = formatMap.GetProperties(GuidelineFormatDefinition.FormatName);
+                line.Stroke = (Brush)resDict[EditorFormatDefinition.BackgroundBrushId];
+
                 layer.AddAdornment(
                     AdornmentPositioningBehavior.OwnerControlled,
                     null,

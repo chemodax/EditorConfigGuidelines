@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualStudio.Text.Editor;
+﻿using Microsoft.VisualStudio.Text.Classification;
+using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
+using TextEditorGuidelines;
 
 namespace EditorConfigGuidelines
 {
@@ -18,9 +20,12 @@ namespace EditorConfigGuidelines
         [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
         private AdornmentLayerDefinition editorAdornmentLayer;
 
+        [Import]
+        internal IEditorFormatMapService formatMapService { get; set; }
+
         public void TextViewCreated(IWpfTextView textView)
         {
-            new GuidelinesAdornment(textView);
+            new GuidelinesAdornment(textView, formatMapService);
         }
     }
 }

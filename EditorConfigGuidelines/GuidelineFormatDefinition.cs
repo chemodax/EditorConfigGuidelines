@@ -5,17 +5,18 @@ using Microsoft.VisualStudio.Utilities;
 
 namespace TextEditorGuidelines
 {
-    // TODO: Not used yet.
     [UserVisible(true)]
     [Export(typeof(EditorFormatDefinition))]
-    [Name("ColumnGuideline")]
+    [Name(GuidelineFormatDefinition.FormatName)]
     public class GuidelineFormatDefinition : EditorFormatDefinition
     {
+        public const string FormatName = "EditorConfigGuidelines/ColumnGuideline";
+
         public GuidelineFormatDefinition()
         {
             DisplayName = "Column guideline color";
             BackgroundCustomizable = true;
-            BackgroundColor = Colors.Gray;
+            BackgroundColor = Color.FromArgb(0x35, 0xD0, 0xD0, 0xD0);
             ForegroundCustomizable = false;
         }
     }
