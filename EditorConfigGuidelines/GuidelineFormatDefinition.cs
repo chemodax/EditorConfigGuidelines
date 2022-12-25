@@ -3,7 +3,7 @@ using System.Windows.Media;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 
-namespace TextEditorGuidelines
+namespace EditorConfigGuidelines
 {
     [UserVisible(true)]
     [Export(typeof(EditorFormatDefinition))]

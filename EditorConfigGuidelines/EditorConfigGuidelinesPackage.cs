@@ -28,7 +28,7 @@ namespace EditorConfigGuidelines
     public sealed class EditorConfigGuidelinesPackage : AsyncPackage
     {
         /// <summary>
-        /// TextEditorGuidelinesPackage GUID string.
+        /// EditorConfigGuidelinesPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "27e2d04d-4a9c-40df-b710-6afab4568240";
 
