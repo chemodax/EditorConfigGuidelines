@@ -4,6 +4,7 @@
         <Identity Id="EditorConfigGuidelines.b132e8b2-41e6-4df6-b226-bfabfd00e717" Version="1.0" Language="en-US" Publisher="Ivan.Z" />
         <DisplayName>EditorConfigGuidelines</DisplayName>
         <Description xml:space="preserve">Adds support for guideline property in .editorconfig files to display column guides in the Visual Studio text editor.</Description>
+        <Icon>Resources\icon.ico</Icon>
         <Tags>.editorconfig,guidelines</Tags>
     </Metadata>
     <Installation>
