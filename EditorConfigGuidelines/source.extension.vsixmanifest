@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="EditorConfigGuidelines.b132e8b2-41e6-4df6-b226-bfabfd00e717" Version="1.0.1" Language="en-US" Publisher="Ivan.Z" />
-        <DisplayName>EditorConfigGuidelines</DisplayName>
+        <DisplayName>EditorConfig Guidelines</DisplayName>
         <Description xml:space="preserve">Adds support for guideline property in .editorconfig files to display column guides in the Visual Studio text editor.</Description>
         <Icon>Resources\icon.ico</Icon>
         <Tags>.editorconfig,guidelines</Tags>
