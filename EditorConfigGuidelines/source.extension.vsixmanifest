@@ -5,6 +5,7 @@
         <DisplayName>EditorConfig Guidelines</DisplayName>
         <Description xml:space="preserve">Adds support for guideline property in .editorconfig files to display column guides in the Visual Studio text editor.</Description>
         <Icon>Resources\icon.ico</Icon>
+        <PreviewImage>Resources\icon-128.png</PreviewImage>
         <Tags>.editorconfig,guidelines</Tags>
     </Metadata>
     <Installation>

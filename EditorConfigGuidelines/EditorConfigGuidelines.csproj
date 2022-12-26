@@ -83,6 +83,11 @@
     <None Include="EditorConfigGuidelinesColors.vstheme" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\icon-128.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icon-256.png" />
     <Content Include="Resources\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
