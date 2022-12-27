@@ -57,8 +57,11 @@ namespace EditorConfigGuidelines
 
         private void TextView_OptionChanged(object sender, EditorOptionChangedEventArgs e)
         {
-            guidelines = ParseOptions(view.Options);
-            CreateVisuals();
+            if (e.OptionId == DefaultOptions.RawCodingConventionsSnapshotOptionId.Name)
+            {
+                guidelines = ParseOptions(view.Options);
+                CreateVisuals();
+            }
         }
 
         private static int[] ParseOptions(IEditorOptions options)
