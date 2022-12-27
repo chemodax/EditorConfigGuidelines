@@ -47,6 +47,7 @@
     <DeployExtension>False</DeployExtension>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GeneralOptions.cs" />
     <Compile Include="GuidelineDataSource.cs" />
     <Compile Include="GuidelineFormatDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Community.VisualStudio.Toolkit;
+using System.Threading.Tasks;
 
 namespace EditorConfigGuidelines
 {
@@ -37,6 +39,24 @@ namespace EditorConfigGuidelines
             this.view.LayoutChanged += TextView_LayoutChanged;
             this.formatMap = formatMapService.GetEditorFormatMap(view);
             this.formatMap.FormatMappingChanged += FormatMap_FormatMappingChanged;
+
+            if (guidelines.Length > 0)
+            {
+                RegisterUsage();
+            }
+        }
+
+        private void RegisterUsage()
+        {
+            ThreadHelper.JoinableTaskFactory.StartOnIdle(async () =>
+            {
+                RatingPrompt rating = new RatingPrompt(
+                    "Ivan.EditorConfigGuidelines",
+                    "EditorConfig Guidelines",
+                    await GeneralOptions.GetLiveInstanceAsync(),
+                    50);
+                rating.RegisterSuccessfulUsage();
+            }, VsTaskRunContext.UIThreadIdlePriority).FireAndForget();
         }
 
         private void FormatMap_FormatMappingChanged(object sender, FormatItemsEventArgs e)
@@ -60,6 +80,12 @@ namespace EditorConfigGuidelines
             if (e.OptionId == DefaultOptions.RawCodingConventionsSnapshotOptionId.Name)
             {
                 guidelines = ParseOptions(view.Options);
+
+                if (guidelines.Length > 0)
+                {
+                    RegisterUsage();
+                }
+
                 CreateVisuals();
             }
         }
