@@ -23,6 +23,10 @@ guidelines = 80, 100
 
 ### Changelog
 
+* **1.1.0** (06 January 2023)
+  * Add option to specify guidelines style (solid, dashed, dotted)
+  * Suggest to rate extension on Visual Studio Marketplace.
+
 * **1.0.3** (26 December 2022)
   * Update icon.
 
