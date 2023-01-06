@@ -20,3 +20,14 @@ guidelines = 80, 100
 - Theming support.
 - Customizable guideline color.
 - **No** telemetry.
+
+### Changelog
+
+* **1.0.3** (26 December 2022)
+  * Update icon.
+
+* **1.0.1** (26 December 2022)
+  * Update display name.
+
+* **1.0.0** (26 December 2022)
+  * Initial release.
