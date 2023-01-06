@@ -12,7 +12,7 @@ Sample `.editorconfig`:
 root = true
 
 [*]
-guidelines = 80, 100
+guidelines = 80 dashed, 100
 ```
 
 ### Features
