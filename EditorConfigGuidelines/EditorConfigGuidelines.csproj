@@ -48,6 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GeneralOptions.cs" />
+    <Compile Include="Guideline.cs" />
     <Compile Include="GuidelineDataSource.cs" />
     <Compile Include="GuidelineFormatDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

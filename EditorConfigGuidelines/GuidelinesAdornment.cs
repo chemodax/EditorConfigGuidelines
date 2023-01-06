@@ -22,7 +22,7 @@ namespace EditorConfigGuidelines
                                  ThemeResourceKeyType.BackgroundBrush);
 
         private readonly IAdornmentLayer layer;
-        private int[] guidelines;
+        private Guideline[] guidelines;
 
         private readonly IWpfTextView view;
         private readonly List<GuidelineDataSource> guidelinesDataSource;
@@ -90,7 +90,38 @@ namespace EditorConfigGuidelines
             }
         }
 
-        private static int[] ParseOptions(IEditorOptions options)
+        private static bool TryParseGuidelineStyle(string str,
+            out DoubleCollection dashArray)
+        {
+            if (str.Equals("solid", StringComparison.InvariantCultureIgnoreCase))
+            {
+                dashArray = new DoubleCollection();
+                return true;
+            }
+            else if (str.Equals("dashed", StringComparison.InvariantCultureIgnoreCase))
+            {
+                dashArray = new DoubleCollection() { 3, 3};
+                return true;
+
+            }
+            else if (str.Equals("dotted", StringComparison.InvariantCultureIgnoreCase))
+            {
+                dashArray = new DoubleCollection() { 1, 4 };
+                return true;
+            }
+            else
+            {
+                dashArray = default;
+                return false;
+            }
+        }
+
+        private static bool TryParseGuidelineColumn(string str, out int column)
+        {
+            return int.TryParse(str, out column);
+        }
+
+        private static Guideline[] ParseOptions(IEditorOptions options)
         {
             try
             {
@@ -101,24 +132,45 @@ namespace EditorConfigGuidelines
                     conventions.TryGetValue("guidelines", out guidelines) &&
                     guidelines is string)
                 {
-                    List<int> result = new List<int>();
-                    foreach (string str in guidelines.ToString().Split(new char[] {' ', ',', ';'}, StringSplitOptions.RemoveEmptyEntries))
+                    List<Guideline> result = new List<Guideline>();
+                    foreach (string str in guidelines.ToString().Split(new char[] {',', ';'}, StringSplitOptions.RemoveEmptyEntries))
                     {
-                        int guideline;
-                        if (int.TryParse(str, out guideline))
+                        string[] tokens = str.Split(
+                            new char[] { ' ', '\t' },
+                            StringSplitOptions.RemoveEmptyEntries);
+
+                        int? column = null;
+                        DoubleCollection dashArray = default;
+
+                        foreach (string token in tokens)
                         {
-                            result.Add(guideline);
+                            DoubleCollection dc;
+                            int num;
+
+                            if (TryParseGuidelineStyle(token, out dc))
+                            {
+                                dashArray = dc;
+                            }
+                            else if (TryParseGuidelineColumn(token, out num))
+                            {
+                                column = num;
+                            }
+                        }
+
+                        if (column.HasValue)
+                        {
+                            result.Add(new Guideline(column.Value, dashArray));
                         }
                     }
 
                     return result.ToArray();
                 }
 
-                return new int[] {};
+                return new Guideline[] {};
             }
             catch (Exception)
             {
-                return new int[] { };
+                return new Guideline[] { };
             }
         }
 
@@ -126,9 +178,9 @@ namespace EditorConfigGuidelines
         {
             layer.RemoveAllAdornments();
             guidelinesDataSource.Clear();
-            foreach (int guideline in guidelines)
+            foreach (Guideline guideline in guidelines)
             {
-                GuidelineDataSource dataContext = new GuidelineDataSource(view, guideline);
+                GuidelineDataSource dataContext = new GuidelineDataSource(view, guideline.Column);
                 guidelinesDataSource.Add(dataContext);
 
                 Line line = new Line();
@@ -140,6 +192,7 @@ namespace EditorConfigGuidelines
 
                 ResourceDictionary resDict = formatMap.GetProperties(GuidelineFormatDefinition.FormatName);
                 line.Stroke = (Brush)resDict[EditorFormatDefinition.BackgroundBrushId];
+                line.StrokeDashArray = guideline.DashArray;
 
                 layer.AddAdornment(
                     AdornmentPositioningBehavior.OwnerControlled,
