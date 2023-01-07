@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.Text.Editor;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Microsoft.VisualStudio.Text.Editor;
 
 namespace EditorConfigGuidelines
 {
@@ -19,8 +19,8 @@ namespace EditorConfigGuidelines
             }
         }
 
-        public double Y1 
-        { 
+        public double Y1
+        {
             get
             {
                 return y1;

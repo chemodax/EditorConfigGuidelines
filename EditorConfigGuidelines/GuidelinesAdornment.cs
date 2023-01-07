@@ -1,16 +1,13 @@
-﻿using Microsoft.VisualStudio.PlatformUI;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Text.Editor;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Community.VisualStudio.Toolkit;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text.Classification;
+using Microsoft.VisualStudio.Text.Editor;
 
 namespace EditorConfigGuidelines
 {
@@ -18,7 +15,7 @@ namespace EditorConfigGuidelines
     {
         private static Guid colorCategoryGuid = new Guid("{54FAC166-299A-4D70-9F43-F79E9A867B80}");
         private static ThemeResourceKey guidelineColorKey =
-            new ThemeResourceKey(colorCategoryGuid, "ColumnGuidelineColor", 
+            new ThemeResourceKey(colorCategoryGuid, "ColumnGuidelineColor",
                                  ThemeResourceKeyType.BackgroundBrush);
 
         private readonly IAdornmentLayer layer;
@@ -69,7 +66,7 @@ namespace EditorConfigGuidelines
 
         private void TextView_LayoutChanged(object sender, TextViewLayoutChangedEventArgs e)
         {
-            foreach(GuidelineDataSource dataSource in guidelinesDataSource)
+            foreach (GuidelineDataSource dataSource in guidelinesDataSource)
             {
                 dataSource.Update();
             }
@@ -100,7 +97,7 @@ namespace EditorConfigGuidelines
             }
             else if (str.Equals("dashed", StringComparison.InvariantCultureIgnoreCase))
             {
-                dashArray = new DoubleCollection() { 3, 3};
+                dashArray = new DoubleCollection() { 3, 3 };
                 return true;
 
             }
@@ -133,7 +130,7 @@ namespace EditorConfigGuidelines
                     guidelines is string)
                 {
                     List<Guideline> result = new List<Guideline>();
-                    foreach (string str in guidelines.ToString().Split(new char[] {',', ';'}, StringSplitOptions.RemoveEmptyEntries))
+                    foreach (string str in guidelines.ToString().Split(new char[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries))
                     {
                         string[] tokens = str.Split(
                             new char[] { ' ', '\t' },
@@ -166,7 +163,7 @@ namespace EditorConfigGuidelines
                     return result.ToArray();
                 }
 
-                return new Guideline[] {};
+                return new Guideline[] { };
             }
             catch (Exception)
             {
