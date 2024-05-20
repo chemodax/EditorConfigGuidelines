@@ -31,7 +31,7 @@ namespace EditorConfigGuidelines
             this.view = view;
             this.layer = view.GetAdornmentLayer("EditorConfigGuidelinesAdornment");
 
-            this.guidelines = ParseOptions(view.Options);
+            this.guidelines = EditorConfigOptionsParser.Parse(view.Options);
             this.view.Options.OptionChanged += TextView_OptionChanged;
             this.view.LayoutChanged += TextView_LayoutChanged;
             this.formatMap = formatMapService.GetEditorFormatMap(view);
@@ -76,7 +76,7 @@ namespace EditorConfigGuidelines
         {
             if (e.OptionId == DefaultOptions.RawCodingConventionsSnapshotOptionId.Name)
             {
-                guidelines = ParseOptions(view.Options);
+                guidelines = EditorConfigOptionsParser.Parse(view.Options);
 
                 if (guidelines.Length > 0)
                 {
@@ -84,90 +84,6 @@ namespace EditorConfigGuidelines
                 }
 
                 CreateVisuals();
-            }
-        }
-
-        private static bool TryParseGuidelineStyle(string str,
-            out DoubleCollection dashArray)
-        {
-            if (str.Equals("solid", StringComparison.InvariantCultureIgnoreCase))
-            {
-                dashArray = new DoubleCollection();
-                return true;
-            }
-            else if (str.Equals("dashed", StringComparison.InvariantCultureIgnoreCase))
-            {
-                dashArray = new DoubleCollection() { 3, 3 };
-                return true;
-
-            }
-            else if (str.Equals("dotted", StringComparison.InvariantCultureIgnoreCase))
-            {
-                dashArray = new DoubleCollection() { 1, 4 };
-                return true;
-            }
-            else
-            {
-                dashArray = default;
-                return false;
-            }
-        }
-
-        private static bool TryParseGuidelineColumn(string str, out int column)
-        {
-            return int.TryParse(str, out column);
-        }
-
-        private static Guideline[] ParseOptions(IEditorOptions options)
-        {
-            try
-            {
-                IReadOnlyDictionary<string, object> conventions =
-                    options.GetOptionValue(DefaultOptions.RawCodingConventionsSnapshotOptionId);
-                object guidelines;
-                if (conventions != null &&
-                    conventions.TryGetValue("guidelines", out guidelines) &&
-                    guidelines is string)
-                {
-                    List<Guideline> result = new List<Guideline>();
-                    foreach (string str in guidelines.ToString().Split(new char[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries))
-                    {
-                        string[] tokens = str.Split(
-                            new char[] { ' ', '\t' },
-                            StringSplitOptions.RemoveEmptyEntries);
-
-                        int? column = null;
-                        DoubleCollection dashArray = default;
-
-                        foreach (string token in tokens)
-                        {
-                            DoubleCollection dc;
-                            int num;
-
-                            if (TryParseGuidelineStyle(token, out dc))
-                            {
-                                dashArray = dc;
-                            }
-                            else if (TryParseGuidelineColumn(token, out num))
-                            {
-                                column = num;
-                            }
-                        }
-
-                        if (column.HasValue)
-                        {
-                            result.Add(new Guideline(column.Value, dashArray));
-                        }
-                    }
-
-                    return result.ToArray();
-                }
-
-                return new Guideline[] { };
-            }
-            catch (Exception)
-            {
-                return new Guideline[] { };
             }
         }
 

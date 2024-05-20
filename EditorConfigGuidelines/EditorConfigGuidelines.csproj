@@ -47,6 +47,7 @@
     <DeployExtension>False</DeployExtension>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EditorConfigOptionsParser.cs" />
     <Compile Include="GeneralOptions.cs" />
     <Compile Include="Guideline.cs" />
     <Compile Include="GuidelineDataSource.cs" />
