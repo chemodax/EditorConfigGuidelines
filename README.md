@@ -21,6 +21,28 @@ guidelines = 80 dashed, 100
 - Customizable guideline color.
 - **No** telemetry.
 
+### Installation
+
+#### Using Visual Studio Extension manager
+1. Start Visual Studio 2022
+2. Open Extensions | Manage Extensions
+3. Type EditorConfig
+4. Select EditorConfig Guidelines extension and click Install.
+
+#### Automatically install via .vsconfig
+
+Just add .vsconfig to the root directory of your project with content like this:
+```xml
+{
+  "version": "1.0",
+  "components": [
+  ],
+  "extensions": [
+    "https://marketplace.visualstudio.com/items?itemName=Ivan.EditorConfigGuidelines",
+  ]
+}
+```
+
 ### Changelog
 
 * **1.1.0** (06 January 2023)
