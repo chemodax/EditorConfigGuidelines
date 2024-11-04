@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "art", "art", "{2BE936B8-E138-4C8F-8A2E-FF9224F11ACB}"
 	ProjectSection(SolutionItems) = preProject
 		art\icon.svg = art\icon.svg
+		art\options-1.png = art\options-1.png
 		art\preview-1.png = art\preview-1.png
 		art\preview-2.png = art\preview-2.png
 	EndProjectSection

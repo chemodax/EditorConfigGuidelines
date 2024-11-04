@@ -63,6 +63,20 @@ To configure column guidelines, use the guidelines property in your `.editorconf
 guidelines = 80 solid, 100 dashed, 120 dotted
 ```
 
+#### Guideline color
+
+The extension uses standard Visual Studio Fonts and Colors setting to configure
+column guidelines color. This setting is per-user, to match Visual Studio theme colors.
+
+To configure guidelines color:
+1. Open **Tools** | **Options** from main menu.
+2. Select **Environment** | **Fonts and Colors** category.
+3. Select **Column guideline color** from Display Items list.
+4. Configure item background.
+5. Click **OK** to apply changes.
+
+<img src="art/options-1.png" alt="Options" width="527px" />
+
 ### Changelog
 
 * **1.1.0** (06 January 2023)
