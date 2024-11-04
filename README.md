@@ -8,7 +8,7 @@ guideline in text editor:
 
 
 Sample `.editorconfig`:
-```
+```ini
 root = true
 
 [*]
