@@ -15,6 +15,8 @@ root = true
 guidelines = 80 dashed, 100
 ```
 
+See [configuration](#configuration) section for more details.
+
 ### Features
 - .editorconfig zero-configuration. Ideal for teams.
 - Theming support.
