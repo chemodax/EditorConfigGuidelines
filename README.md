@@ -43,6 +43,26 @@ Just add .vsconfig to the root directory of your project with content like this:
 }
 ```
 
+### Configuration
+
+#### Guideline Positions and Styles
+
+To configure column guidelines, use the guidelines property in your `.editorconfig` file with the following syntax:
+
+- **Syntax**: `guidelines = <column> <style>, <column> <style>, ...`
+- **Parameters**:
+  - `<column>`: The column number where the guideline should appear.
+  - `<style>`: The line style, which can be one of the following:
+    - `solid`
+    - `dashed`
+    - `dotted`
+
+**Example:**
+```ini
+[*.cs]
+guidelines = 80 solid, 100 dashed, 120 dotted
+```
+
 ### Changelog
 
 * **1.1.0** (06 January 2023)
