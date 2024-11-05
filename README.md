@@ -53,10 +53,9 @@ To configure column guidelines, use the guidelines property in your `.editorconf
 
 - **Syntax**: `guidelines = <column> <style>, <column> <style>, ...`
 - **Parameters**:
-  - `<column>`: The column number where the guideline should appear. Columns are
-    numbered from left to right starting at 1, with the guideline drawn on the
-    specified column's right edge. If you specify column 0, the guideline will
-    be drawn on column 1's left edge.
+  - `<column>`: The column number where the guideline should appear. Columns
+    are numbered from left to right starting at 1, with the guideline drawn
+    on the specified column's right edge.
   - `<style>`: The line style, which can be one of the following:
     - `solid`
     - `dashed`
