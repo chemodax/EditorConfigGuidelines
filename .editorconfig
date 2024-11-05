@@ -5,7 +5,7 @@ indent_style = space
 insert_final_newline = true 
 
 [*.cs]
-guidelines = 80, 100
+guidelines = 80 dashed, 100
 
 [*.cs] 
 dotnet_sort_system_directives_first = true 
