@@ -83,6 +83,9 @@ To configure guidelines color:
 
 ### Changelog
 
+* **1.2.0** (28 September 2025)
+  * Add official support for Visual Studio 2026.
+
 * **1.1.0** (06 January 2023)
   * Add option to specify guidelines style (solid, dashed, dotted)
   * Suggest to rate extension on Visual Studio Marketplace.
