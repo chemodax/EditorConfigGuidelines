@@ -10,6 +10,8 @@ namespace EditorConfigGuidelines
     [TextViewRole(PredefinedTextViewRoles.Document)]
     internal sealed class TextViewCreationListener : IWpfTextViewCreationListener
     {
+        private readonly IEditorFormatMapService formatMapService;
+
         /// <summary>
         /// Defines the adornment layer for the adornment. This layer is ordered
         /// after the selection layer in the Z-order
@@ -19,8 +21,12 @@ namespace EditorConfigGuidelines
         [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
         private AdornmentLayerDefinition editorAdornmentLayer;
 
-        [Import]
-        internal IEditorFormatMapService formatMapService { get; set; }
+        [ImportingConstructor]
+        public TextViewCreationListener(
+            [Import] IEditorFormatMapService formatMapService)
+        {
+            this.formatMapService = formatMapService;
+        }
 
         public void TextViewCreated(IWpfTextView textView)
         {
