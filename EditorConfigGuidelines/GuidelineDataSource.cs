@@ -8,40 +8,23 @@ namespace EditorConfigGuidelines
     {
         public double X
         {
-            get
-            {
-                return x;
-            }
+            get => x;
 
-            private set
-            {
-                SetProperty(ref x, value);
-            }
+            private set => SetProperty(ref x, value);
         }
 
         public double Y1
         {
-            get
-            {
-                return y1;
-            }
-            private set
-            {
-                SetProperty(ref y1, value);
-            }
+            get => y1;
+
+            private set => SetProperty(ref y1, value);
         }
 
         public double Y2
         {
-            get
-            {
-                return y2;
-            }
+            get => y2;
 
-            private set
-            {
-                SetProperty(ref y2, value);
-            }
+            private set => SetProperty(ref y2, value);
         }
 
         private readonly IWpfTextView view;
