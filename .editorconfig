@@ -5,6 +5,9 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.{csproj,targets,props}]
+indent_size = 2
+
 [*.{cs,md}]
 guidelines = 80 dashed, 100
 
