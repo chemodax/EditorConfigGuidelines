@@ -33,7 +33,7 @@ namespace EditorConfigGuidelines
 
                         foreach (string token in tokens)
                         {
-                            DoubleCollection dc;
+                            DoubleCollection? dc;
                             int num;
 
                             if (TryParseGuidelineStyle(token, out dc))
