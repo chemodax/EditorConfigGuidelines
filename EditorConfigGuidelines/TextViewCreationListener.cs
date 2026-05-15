@@ -19,7 +19,7 @@ namespace EditorConfigGuidelines
         [Export(typeof(AdornmentLayerDefinition))]
         [Name("EditorConfigGuidelinesAdornment")]
         [Order(After = PredefinedAdornmentLayers.Selection, Before = PredefinedAdornmentLayers.Text)]
-        internal AdornmentLayerDefinition editorAdornmentLayer;
+        internal AdornmentLayerDefinition? editorAdornmentLayer;
 
         [ImportingConstructor]
         public TextViewCreationListener(
