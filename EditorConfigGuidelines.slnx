@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/.github/" />
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/msbuild.yml" />
+  </Folder>
+  <Folder Name="/Solution Items/art/">
+    <File Path="art/icon.svg" />
+    <File Path="art/options-1.png" />
+    <File Path="art/preview-1.png" />
+    <File Path="art/preview-2.png" />
+  </Folder>
+  <Project Path="EditorConfigGuidelines/EditorConfigGuidelines.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
