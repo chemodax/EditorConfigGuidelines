@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11723.231 stable
+VisualStudioVersion = 18.5.11723.231
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorConfigGuidelines", "EditorConfigGuidelines\EditorConfigGuidelines.csproj", "{FF2B264E-A4FA-4568-97C9-431E2B03DD06}"
 EndProject
@@ -17,6 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "art", "art", "{2BE936B8-E13
 		art\options-1.png = art\options-1.png
 		art\preview-1.png = art\preview-1.png
 		art\preview-2.png = art\preview-2.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{CEC97AAA-B8AE-4311-B2CF-66A53EDBB968}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{1DECA8C2-9F7C-4494-BCB4-5854DBDB1EE4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\msbuild.yml = .github\workflows\msbuild.yml
 	EndProjectSection
 EndProject
 Global
@@ -36,6 +43,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2BE936B8-E138-4C8F-8A2E-FF9224F11ACB} = {1D6BA700-74EE-491A-8B46-693E13D6A1D5}
+		{CEC97AAA-B8AE-4311-B2CF-66A53EDBB968} = {1D6BA700-74EE-491A-8B46-693E13D6A1D5}
+		{1DECA8C2-9F7C-4494-BCB4-5854DBDB1EE4} = {CEC97AAA-B8AE-4311-B2CF-66A53EDBB968}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A0821AF-986A-4BB5-81C5-4467FECEEF74}
