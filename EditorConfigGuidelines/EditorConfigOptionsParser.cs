@@ -29,7 +29,7 @@ namespace EditorConfigGuidelines
                             StringSplitOptions.RemoveEmptyEntries);
 
                         int? column = null;
-                        DoubleCollection dashArray = default;
+                        DoubleCollection? dashArray = null;
 
                         foreach (string token in tokens)
                         {
@@ -64,7 +64,7 @@ namespace EditorConfigGuidelines
         }
 
         private static bool TryParseGuidelineStyle(string str,
-            out DoubleCollection dashArray)
+            out DoubleCollection? dashArray)
         {
             if (str.Equals("solid", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -84,7 +84,7 @@ namespace EditorConfigGuidelines
             }
             else
             {
-                dashArray = default;
+                dashArray = null;
                 return false;
             }
         }

@@ -50,7 +50,7 @@ namespace EditorConfigGuidelines
         private double y1;
         private double y2;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public GuidelineDataSource(IWpfTextView view, int guideline)
         {
@@ -71,7 +71,7 @@ namespace EditorConfigGuidelines
             Y2 = view.ViewportBottom;
         }
 
-        private void SetProperty(ref double v, double newVal, [CallerMemberName] string name = null)
+        private void SetProperty(ref double v, double newVal, [CallerMemberName] string? name = null)
         {
             if (v != newVal)
             {
