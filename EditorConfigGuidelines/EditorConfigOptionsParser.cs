@@ -22,10 +22,10 @@ namespace EditorConfigGuidelines
                     guidelines is string)
                 {
                     List<Guideline> result = new List<Guideline>();
-                    foreach (string str in guidelines.ToString().Split(new char[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries))
+                    foreach (string str in guidelines.ToString().Split([',', ';'], StringSplitOptions.RemoveEmptyEntries))
                     {
                         string[] tokens = str.Split(
-                            new char[] { ' ', '\t' },
+                            [' ', '\t'],
                             StringSplitOptions.RemoveEmptyEntries);
 
                         int? column = null;
@@ -55,11 +55,11 @@ namespace EditorConfigGuidelines
                     return result.ToArray();
                 }
 
-                return new Guideline[] { };
+                return [];
             }
             catch (Exception)
             {
-                return new Guideline[] { };
+                return [];
             }
         }
 
@@ -68,18 +68,18 @@ namespace EditorConfigGuidelines
         {
             if (str.Equals("solid", StringComparison.InvariantCultureIgnoreCase))
             {
-                dashArray = new DoubleCollection();
+                dashArray = [];
                 return true;
             }
             else if (str.Equals("dashed", StringComparison.InvariantCultureIgnoreCase))
             {
-                dashArray = new DoubleCollection() { 3, 3 };
+                dashArray = [3, 3];
                 return true;
 
             }
             else if (str.Equals("dotted", StringComparison.InvariantCultureIgnoreCase))
             {
-                dashArray = new DoubleCollection() { 1, 4 };
+                dashArray = [1, 4];
                 return true;
             }
             else
