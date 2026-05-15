@@ -83,6 +83,9 @@ To configure guidelines color:
 
 ### Changelog
 
+* **1.3.0** (15 May 2026)
+  * Internal changes.
+
 * **1.2.0** (28 September 2025)
   * Add official support for Visual Studio 2026.
 
